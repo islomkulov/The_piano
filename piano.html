@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>The Piano</title>
+   <style>
+      .container {
+         width: 1260px;
+         margin: auto;
+         padding-top: 100px;
+      }
+
+      .piano {
+         display: flex;
+         justify-content: center;
+      }
+
+      .piano_nota {
+         width: 100px;
+         text-align: center;
+         padding: 40px 0 400px;
+         font-size: 30px;
+         background-color: black;
+         color: white;
+         transition: all 0.3s ease;
+         border-radius: 10px;
+         margin-right: 5px;
+      }
+      .red {
+         background-color: red;
+      }
+
+      .scale {
+         transform: scale(0.95);
+      }
+   </style>
+</head>
+
+<body>
+   <div class="container">
+      <div class="piano" id="piano">
+         <div class="piano_nota" id="piano_nota">do</div>
+         <div class="piano_nota" id="piano_nota">re</div>
+         <div class="piano_nota" id="piano_nota">mi</div>
+         <div class="piano_nota" id="piano_nota">fa</div>
+         <div class="piano_nota" id="piano_nota">sol</div>
+         <div class="piano_nota" id="piano_nota">ya</div>
+         <div class="piano_nota" id="piano_nota">si</div>
+      </div>
+   </div>
+
+   <script>
+
+      // ---------------------------------->>> random bgcolor  of piano nota  <<< -------------------------------------------------
+
+      let piano = document.getElementById('piano');
+      let nota = document.querySelectorAll('#piano_nota');
+      
+
+      for (let i = 0; i < nota.length; i++) {
+        
+         nota[i].addEventListener('mouseout', function () {
+            nota[i].classList.toggle('scale');
+            nota[i].classList.toggle('red');
+         })
+        
+         nota[0].addEventListener('mouseout', Do)
+         nota[1].addEventListener('mouseout', Re)
+         nota[2].addEventListener('mouseout', Mi)
+         nota[3].addEventListener('mouseout', Fa)
+         nota[4].addEventListener('mouseout', Sol)
+         nota[5].addEventListener('mouseout', Lja)
+         nota[6].addEventListener('mouseout', Si)
+
+         document.addEventListener('keypress', function (e) {
+            console.log(e.keyCode)
+            if (e.keyCode == 97) {
+               nota[0].classList.toggle('red')
+               nota[0].classList.toggle('scale')
+               Do()
+            }
+            else if (e.keyCode == 115) {
+               nota[1].classList.toggle('red')
+               nota[1].classList.toggle('scale')
+               Re()
+            }
+            else if (e.keyCode == 100) {
+               nota[2].classList.toggle('red')
+               nota[2].classList.toggle('scale')
+               Mi()
+            }
+            else if (e.keyCode == 102) {
+               nota[3].classList.toggle('red')
+               nota[3].classList.toggle('scale')
+               Fa()
+            }
+            else if (e.keyCode == 103) {
+               nota[4].classList.toggle('red')
+               nota[4].classList.toggle('scale')
+               Sol()
+            }
+            else if (e.keyCode == 104) {
+               nota[5].classList.toggle('red')
+               nota[5].classList.toggle('scale')
+               Lja()
+            }
+            else if (e.keyCode == 106) {
+               nota[6].classList.toggle('red')
+               nota[6].classList.toggle('scale')
+               Si()
+            }
+         })
+
+      }
+      function Do() {
+         let music = new Audio('sounds/do.mp3')
+         music.play()
+      }
+      function Re() {
+         let music = new Audio('sounds/re.mp3')
+         music.play()
+      }
+      function Mi() {
+         let music = new Audio('sounds/mi.mp3')
+         music.play()
+      }
+      function Fa() {
+         let music = new Audio('sounds/fa.mp3')
+         music.play()
+      }
+      function Sol() {
+         let music = new Audio('sounds/sol.mp3')
+         music.play()
+      }
+      function Lja() {
+         let music = new Audio('sounds/lja.mp3')
+         music.play()
+      }
+      function Si() {
+         let music = new Audio('sounds/si.mp3')
+         music.play()
+      }
+
+   </script>
+</body>
+
+</html>
